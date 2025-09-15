@@ -1,0 +1,18 @@
+{
+  "auth": {
+    "identityProviders": {
+      "azureActiveDirectory": {
+        "registration": {
+          "openIdIssuer": "https://login.microsoftonline.com/f99d8070-e0c1-4aaa-a039-37e03f337b1d/v2.0",
+          "clientId": "be740373-2212-4411-a1a9-0c7bdf22f2ee"
+        }
+      }
+    }
+  },
+  "routes": [
+    {
+      "route": "/.auth/login/aad/callback",
+      "statusCode": 200
+    }
+  ]
+}
