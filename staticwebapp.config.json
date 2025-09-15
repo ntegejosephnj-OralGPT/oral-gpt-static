@@ -9,11 +9,20 @@
       "statusCode": 200
     },
     {
-      "route": "/.auth/profile",
+      "route": "/.auth/login/github",
       "statusCode": 200
     }
   ],
   "navigationFallback": {
-    "rewrite": "/index.html"
+    "rewrite": "/index.html",
+    "exclude": ["/images/*.{png,jpg,gif}", "/css/*"]
+  },
+  "responseOverrides": {
+    "401": {
+      "rewrite": "/index.html"
+    },
+    "404": {
+      "rewrite": "/index.html"
+    }
   }
 }
