@@ -7,11 +7,18 @@
     {
       "route": "/.auth/logout",
       "statusCode": 200
+    },
+    {
+      "route": "/.auth/me",
+      "statusCode": 200
     }
   ],
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["/images/*.{png,jpg,gif}", "/css/*", "/.auth/*"]
+    "exclude": [
+      "/images/*.{png,jpg,gif}",
+      "/css/*"
+    ]
   },
   "responseOverrides": {
     "401": {
@@ -21,7 +28,15 @@
       "rewrite": "/index.html"
     }
   },
-  "globalHeaders": {
-    "Cache-Control": "no-cache"
+  "auth": {
+    "identityProviders": {
+      "azureActiveDirectory": {
+        "registration": {
+          "clientIdSettingName": "AZURE_CLIENT_ID",
+          "clientSecretSettingName": "AZURE_CLIENT_SECRET",
+          "tenantIdSettingName": "AZURE_TENANT_ID"
+        }
+      }
+    }
   }
 }
