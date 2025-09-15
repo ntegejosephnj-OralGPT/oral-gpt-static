@@ -1,1 +1,19 @@
-{"routes":[{"route":"/.auth/login/aad","statusCode":200},{"route":"/.auth/logout","statusCode":200},{"route":"/.auth/me","statusCode":200}],"navigationFallback":{"rewrite":"/index.html"},"responseOverrides":{"401":{"rewrite":"/index.html"},"404":{"rewrite":"/index.html"}},"auth":{"rolesSource":"/api/getRolesForUser","identityProviders":{"azureActiveDirectory":{"registration":{"openIdIssuer":"https://login.microsoftonline.com/f99d8070-e0c1-4aaa-a039-37e03f337b1d","clientIdSettingName":"AZURE_CLIENT_ID","clientSecretSettingName":"AZURE_CLIENT_SECRET_APP_SETTING_NAME"}}}}}
+{
+  "routes": [
+    {
+      "route": "/.auth/login/aad",
+      "statusCode": 200
+    },
+    {
+      "route": "/.auth/logout",
+      "statusCode": 200
+    },
+    {
+      "route": "/.auth/profile",
+      "statusCode": 200
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/index.html"
+  }
+}
