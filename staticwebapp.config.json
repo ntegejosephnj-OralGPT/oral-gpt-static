@@ -12,7 +12,7 @@
   "navigationFallback": {
     "rewrite": "/index.html",
     "exclude": [
-      "/google*.html",                // 👈 allow Google verification files
+      "/google*.html",                // 👈 this allows Google verification files directly
       "/images/*.{png,jpg,gif,svg,webp}",
       "/css/*",
       "/js/*",
