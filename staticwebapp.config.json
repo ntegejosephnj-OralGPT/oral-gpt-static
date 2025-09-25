@@ -1,33 +1,31 @@
 {
   "routes": [
-    {
-      "route": "/.auth/login/aad",
-      "statusCode": 200
-    },
-    {
-      "route": "/.auth/logout",
-      "statusCode": 200
-    },
-    {
-      "route": "/.auth/me",
-      "statusCode": 200
-    }
+    { "route": "/.auth/login/aad", "statusCode": 200 },
+    { "route": "/.auth/logout", "statusCode": 200 },
+    { "route": "/.auth/me", "statusCode": 200 },
+
+    // Optional: explicit public routes for your legal pages
+    { "route": "/privacy", "rewrite": "/privacy.html" },
+    { "route": "/terms",   "rewrite": "/terms.html" }
   ],
+
   "navigationFallback": {
     "rewrite": "/index.html",
     "exclude": [
-      "/images/*.{png,jpg,gif}",
-      "/css/*"
+      "/images/*.{png,jpg,gif,svg,webp}",
+      "/css/*",
+      "/js/*",
+      "/favicon.ico",
+      "/privacy.html",
+      "/terms.html"
     ]
   },
+
   "responseOverrides": {
-    "401": {
-      "rewrite": "/index.html"
-    },
-    "404": {
-      "rewrite": "/index.html"
-    }
+    "401": { "rewrite": "/index.html" },
+    "404": { "rewrite": "/index.html" }
   },
+
   "auth": {
     "identityProviders": {
       "azureActiveDirectory": {
