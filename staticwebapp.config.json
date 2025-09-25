@@ -4,7 +4,7 @@
     { "route": "/.auth/logout", "statusCode": 200 },
     { "route": "/.auth/me", "statusCode": 200 },
 
-    // Optional: explicit public routes for your legal pages
+    // Explicit public routes for your legal pages
     { "route": "/privacy", "rewrite": "/privacy.html" },
     { "route": "/terms",   "rewrite": "/terms.html" }
   ],
@@ -12,6 +12,7 @@
   "navigationFallback": {
     "rewrite": "/index.html",
     "exclude": [
+      "/google*.html",                // 👈 allow Google verification files
       "/images/*.{png,jpg,gif,svg,webp}",
       "/css/*",
       "/js/*",
