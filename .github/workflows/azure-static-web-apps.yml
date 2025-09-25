@@ -2,12 +2,10 @@ name: Azure Static Web Apps CI/CD
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
-    types: [opened, synchronize, reopened, closed]
-    branches:
-      - main
+    types: [ opened, synchronize, reopened, closed ]
+    branches: [ main ]
 
 jobs:
   build_and_deploy_job:
@@ -15,20 +13,25 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-      # 1. Checkout repository
+      # 1) Checkout repository
       - uses: actions/checkout@v3
 
-      # 2. Deploy to Azure Static Web Apps (no build step, just serve index.html)
+      # 2) Upload static site (no build)
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          action: "upload"
-          app_location: "/"        # Root folder of your app
-          api_location: ""         # No API backend
-          output_location: ""      # Empty because no build output
+          action: upload
+          production_branch: main
+          app_location: "/"          # serve from repo root
+          api_location: ""           # no API
+          output_location: ""        # no build output
+          skip_app_build: true       # <- force no app build
+          skip_api_build: true       # <- force no API build
+          app_build_command: ""      # <- double safety
+          api_build_command: ""      # <- double safety
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
@@ -40,4 +43,4 @@ jobs:
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
-          action: "close"
+          action: close
